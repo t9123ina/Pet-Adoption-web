@@ -13,13 +13,13 @@ const Header = props => {
       </Typography>
       <StyledBreadcrumb
         component="a"
-        href="/#"
+        href="/"
         label="Home"
         icon={<HomeIcon fontSize="small" />}
       />
       <StyledBreadcrumb
         component="a"
-        href="#"
+        href="/adopt"
         label="Adopt"
         icon={<PetsIcon fontSize="small" />}
       />
