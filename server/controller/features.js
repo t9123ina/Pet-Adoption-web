@@ -12,11 +12,16 @@ update: to update new records
 module.exports.list = (req, res) => {
   return Features.findAll({ order: [["createdAt", "DESC"]] })
     .then(features => {
-      console.log(features);
-      return res.render("success_view", {
-        table: "Features",
-        items: features
-      });
+      const headers = req.headers;
+      if (headers.hasOwnProperty("origin")) {
+        return res.json({ features: features });
+      } else {
+        return res.render("success_view", {
+          table: "Features",
+          items: features,
+          features: features
+        });
+      }
     })
     .catch(err => {
       res.status(404).send(err);
