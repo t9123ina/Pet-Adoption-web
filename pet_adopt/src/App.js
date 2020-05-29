@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Introduction from "./views/introduction";
-import Adoption from "./views/adoption";
-
+import IntroductionPage from "./containers/introduction";
+import AdoptionPage from "./containers/pets";
 import Header from "./components/header/header";
 function App() {
   return (
@@ -10,8 +9,8 @@ function App() {
       <Header />
       <Router>
         <Switch>
-          <Route exact path="/" component={Introduction} />
-          <Route exact path="/adopt" component={Adoption} />
+          <Route exact path="/" component={IntroductionPage} />
+          <Route exact path="/adopt" component={AdoptionPage} />
         </Switch>
       </Router>
     </Fragment>

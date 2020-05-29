@@ -6,7 +6,7 @@ module.exports = {
       return Promise.all([
         queryInterface.addColumn(
           "Features",
-          "description",
+          "img_path",
           {
             type: Sequelize.STRING
           },
@@ -19,7 +19,7 @@ module.exports = {
   down: (queryInterface, Sequelize) => {
     return queryInterface.sequelize.transaction(t => {
       return Promise.all([
-        queryInterface.removeColumn("Features", "description", {
+        queryInterface.removeColumn("Features", "img_path", {
           transaction: t
         })
       ]);

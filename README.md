@@ -7,5 +7,5 @@
 
 ## Migration Creation
 
-1. Edit migration can use the command line `npx sequelize-cli migration:create --name modify feature`
+1. Edit migration can use the command line `npx sequelize-cli migration:create --name modify`
 2. To write the migration file can find in https://sequelize.org/master/manual/migrations.html

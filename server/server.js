@@ -12,6 +12,7 @@ var defaultRouter = require("./router/index");
 app.use(bodyParser.json());
 
 app.use("/", defaultRouter);
+app.use("/static", express.static("upload"));
 
 app.listen(5000, () => {
   console.log("Server is up on port 5000");

@@ -6,8 +6,12 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: DataTypes.STRING,
       type: DataTypes.INTEGER,
+      age: DataTypes.INTEGER,
+      gender: DataTypes.STRING,
+      species: DataTypes.STRING,
       followers: DataTypes.INTEGER,
-      adopted: DataTypes.BOOLEAN
+      adopted: DataTypes.BOOLEAN,
+      img_path: DataTypes.TEXT
     },
     {}
   );

@@ -1,4 +1,7 @@
 import Chip from "@material-ui/core/Chip";
+import CardActions from "@material-ui/core/CardActions";
+import Card from "@material-ui/core/Card";
+
 import { emphasize, withStyles } from "@material-ui/core/styles";
 
 export const StyledBreadcrumb = withStyles(theme => ({
@@ -16,3 +19,16 @@ export const StyledBreadcrumb = withStyles(theme => ({
     }
   }
 }))(Chip);
+
+export const StyledCardAction = withStyles(theme => ({
+  root: {
+    textAlign: "center"
+  }
+}))(CardActions);
+
+export const StyledCard = withStyles(theme => ({
+  root: {
+    boxShadow: "none",
+    marginBottom: theme.spacing(3)
+  }
+}))(Card);
