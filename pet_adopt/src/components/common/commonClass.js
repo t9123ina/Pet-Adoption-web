@@ -1,9 +1,15 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { maxWidth, border, borderRadius } from "@material-ui/system";
 
 export const useStyles = makeStyles(theme => ({
+  container: {
+    marginTop: theme.spacing(4)
+  },
+
   title: {
     textAlign: "center"
+  },
+  subTitle: {
+    paddingTop: theme.spacing(3)
   },
   card: {
     marginBottom: theme.spacing(3)
@@ -18,15 +24,19 @@ export const useStyles = makeStyles(theme => ({
     height: 0,
     paddingTop: "56.25%" // 16:9
   },
-  cardMedia: {
-    marginLeft: "auto",
-    marginRight: "auto",
-    width: theme.spacing(10),
-    height: theme.spacing(10)
+  img: {
+    height: "100px",
+    maxWidth: "100%" // 16:9
   },
   cardContent: {
     width: "50%",
     marginLeft: "auto",
     marginRight: "auto"
+  },
+  chipsLabel: {
+    marginRight: theme.spacing(1)
+  },
+  list: {
+    paddingTop: theme.spacing(1)
   }
 }));

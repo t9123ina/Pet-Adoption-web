@@ -4,14 +4,21 @@ import * as actions from "../actions";
 
 const mapStateToProps = state => {
   const pets = state.app.pets;
+  const animals = state.app.animals;
+  const pet = state.app.pet;
 
   return {
-    pets
+    pets,
+    animals,
+    pet
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  getPets: form => dispatch(actions.getPetsList(form))
+  getPets: (query = null) => dispatch(actions.getPetsList(query)),
+  getAnimals: () => dispatch(actions.getAnimalsList()),
+
+  getPet: id => dispatch(actions.getPet(id))
 });
 
 const AdoptionPage = connect(mapStateToProps, mapDispatchToProps)(Adoption);

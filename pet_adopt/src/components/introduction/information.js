@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useStyles } from "../common/commonClass";
+
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -16,7 +17,15 @@ const Information = props => {
   const length = features.length;
   useEffect(() => {}, [features]);
   return (
-    <Grid container>
+    <Grid container spacing={5}>
+      <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+        <Typography component="h4" variant="h4">
+          A platform for whom love the animal
+        </Typography>
+        <Typography component="h4" variant="h4" className={classes.subTitle}>
+          No more animal will be homeless
+        </Typography>
+      </Grid>
       {features.map(row => (
         <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
           <Card className={classes.card} key={row.id}>
@@ -34,7 +43,7 @@ const Information = props => {
               image={`${API}${row.img_path}`}
               title={row.title}
             />
-            <CardContent className={classes.cardContent}>
+            <CardContent>
               {length !== 0 ? (
                 <Typography variant="body2" color="textSecondary" component="p">
                   {row.description}

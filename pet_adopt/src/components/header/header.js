@@ -27,7 +27,7 @@ const Header = props => {
         />
         <StyledBreadcrumb
           component="a"
-          href="#"
+          href="/contact"
           label="Contact"
           icon={<ListAltIcon fontSize="small" />}
         />

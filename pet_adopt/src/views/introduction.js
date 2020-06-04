@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Container from "@material-ui/core/Container";
+import { useStyles } from "../components/common/commonClass";
+
 import Information from "../components/introduction/information";
 import ProtoTypes from "prop-types";
 const Introduction = props => {
+  const classes = useStyles();
   const { features, getFeatures } = props;
   const [init, setInit] = useState(true);
-  console.log(features);
-
   useEffect(() => {
     const fetchFeatures = () => {
       getFeatures();
@@ -17,7 +18,7 @@ const Introduction = props => {
     }
   }, [features, getFeatures, init]);
   return (
-    <Container>
+    <Container className={classes.container}>
       <Information features={features} />
     </Container>
   );
