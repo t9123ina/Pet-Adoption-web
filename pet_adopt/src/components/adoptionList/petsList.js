@@ -3,7 +3,8 @@ import { useStyles } from "../common/commonClass";
 import {
   StyledCardAction,
   StyledCard,
-  StyledCardHeader
+  StyledCardHeader,
+  StyledchipsLabel
 } from "../common/customisedUI";
 import Grid from "@material-ui/core/Grid";
 
@@ -22,6 +23,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import Avatar from "@material-ui/core/Avatar";
 import ApplyForm from "./applyForm";
 import { API } from "../../apis";
+import axios from "axios";
 import Alert from "@material-ui/lab/Alert";
 const PetLists = props => {
   const { pets, pet, getPet } = props;
@@ -29,23 +31,49 @@ const PetLists = props => {
   const [show, setShow] = useState(false);
   const classes = useStyles();
   const length = pets.length;
-  console.log(length);
+  const [applyForm, setapplyForm] = useState({
+    applyname: "",
+    email: "",
+    phone: "",
+    animal:"",
+    adoptednum:"",
+    reason:"",
+    experience:""
+  });
+  const handleChange = event => {
+    const { name, value } = event.target;
+    
+    var updateForm = applyForm;
+    updateForm[name] = value;
+    setapplyForm(Object.assign({}, updateForm));
+  };
   const handleSubmit = () => {
     setSelectedPet(null);
+    axios.post(`${API}/applyform`, {
+      applyname: applyForm.applyname,
+      email: applyForm.email,
+      phone: applyForm.phone,
+      animal: applyForm.animal,
+      adoptednum: applyForm.adoptednum,
+      reason: applyForm.reason,
+      experience: applyForm.experience
+    })
+    setapplyForm(Object.assign({}, { applyname: "", email: "",phone: "",animal:"", adoptednum:"",reason:"",experience:""  }));
     setShow(false);
   };
   const handleClose = () => {
     setSelectedPet(null);
     setShow(false);
+    setapplyForm(Object.assign({}, { applyname: "", email: "",phone: "",animal:"", adoptednum:"",reason:"",experience:""  }));
   };
   const handleApply = id => {
     getPet(id);
+    setShow(true);
   };
   useEffect(() => {
     const length = Object.keys(pet).length;
     if (length !== 0) {
       setSelectedPet(pet);
-      setShow(true);
     }
   }, [pets, pet]);
   return (
@@ -53,6 +81,8 @@ const PetLists = props => {
       <ApplyForm
         show={show}
         pet={selectedPet}
+        applyForm ={applyForm}
+        handleChange={handleChange}
         handleSubmit={handleSubmit}
         handleClose={handleClose}
       />
@@ -74,23 +104,23 @@ const PetLists = props => {
                   length !== 0 ? (
                     <>
                       <Typography className={classes.list}>
-                        <Chip className={classes.chipsLabel} label="Name" />
+                        <StyledchipsLabel className={classes.chipsLabel} label="Name" />
                         {row.name}
                       </Typography>
                       <Typography className={classes.list}>
-                        <Chip className={classes.chipsLabel} label="Animal" />
+                        <StyledchipsLabel className={classes.chipsLabel} label="Animal" />
                         {row.Animal}
                       </Typography>
                       <Typography className={classes.list}>
-                        <Chip className={classes.chipsLabel} label="Gender" />
+                        <StyledchipsLabel className={classes.chipsLabel} label="Gender" />
                         {row.gender}
                       </Typography>
                       <Typography className={classes.list}>
-                        <Chip className={classes.chipsLabel} label="Age" />
+                        <StyledchipsLabel className={classes.chipsLabel} label="Age" />
                         {row.age} Olds
                       </Typography>
                       <Typography className={classes.list}>
-                        <Chip className={classes.chipsLabel} label="Species" />
+                        <StyledchipsLabel className={classes.chipsLabel} label="Species" />
                         {row.species}
                       </Typography>
                     </>
@@ -102,7 +132,7 @@ const PetLists = props => {
               <StyledCardAction disableSpacing>
                 <Container>
                   <IconButton>
-                    <ThumbUpIcon color="primary" />
+                    <ThumbUpIcon color="secondary" />
                     <Chip
                       variant="outlined"
                       size="small"

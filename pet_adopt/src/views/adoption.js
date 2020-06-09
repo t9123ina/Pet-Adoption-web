@@ -7,6 +7,7 @@ import PetLists from "../components/adoptionList/petsList";
 import SearchForm from "../components/adoptionList/searchForm";
 import Typography from "@material-ui/core/Typography";
 import { useStyles } from "../components/common/commonClass";
+import { StyleBannerTypography } from "../components/common/customisedUI";
 
 const Adoption = props => {
   const classes = useStyles();
@@ -20,7 +21,7 @@ const Adoption = props => {
   const [error, setError] = useState(null);
   const onSearch = () => {
     var query = Object.assign({}, searchForm);
-    if (query.age !== 0) {
+    if (query.age !== -1) {
       if (query.type === 0) {
         delete query["type"];
       }
@@ -60,12 +61,12 @@ const Adoption = props => {
     <Container className={classes.container}>
       <Grid container spacing={5}>
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Typography variant="h4" component="h4">
+          <StyleBannerTypography variant="h4" component="h4">
             We provide an easy way for you to adopt a pet.
-          </Typography>
-          <Typography variant="h4" component="h4" className={classes.subTitle}>
+          </StyleBannerTypography>
+          <StyleBannerTypography variant="h4" component="h4" className={classes.subTitle}>
             Just fill out the form and we will inform you ASAP.
-          </Typography>
+          </StyleBannerTypography>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <SearchForm

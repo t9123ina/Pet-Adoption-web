@@ -16,12 +16,14 @@ export const useStyles = makeStyles(theme => ({
   },
   searchForm: {
     "& .MuiTextField-root": {
-      marginRight: theme.spacing(2),
-      width: "25ch"
-    }
+      marginRight: theme.spacing(3),
+      width: "25ch",
+    },
+    marginLeft: theme.spacing(28)
   },
-  media: {
-    height: 0,
+  media: {  
+    width: "56%",
+    marginLeft: theme.spacing(10),
     paddingTop: "56.25%" // 16:9
   },
   img: {
@@ -29,12 +31,12 @@ export const useStyles = makeStyles(theme => ({
     maxWidth: "100%" // 16:9
   },
   cardContent: {
-    width: "50%",
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
+    textAlign: "center"
   },
   chipsLabel: {
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   list: {
     paddingTop: theme.spacing(1)

@@ -19,7 +19,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import { useStyles } from "../common/commonClass";
 import { Typography } from "@material-ui/core";
 const ApplyForm = props => {
-  const { pet, show, handleClose, handleSubmit } = props;
+  const { pet, show, handleClose, handleSubmit, applyForm, handleChange } = props;
   const classes = useStyles();
   useEffect(() => {
     console.log(pet);
@@ -47,29 +47,43 @@ const ApplyForm = props => {
         ) : null}
         <form id="apply-form" className={classes.searchForm}>
           <div className="mb-2">
-            <TextField label="applicant name" />
+            <TextField 
+            label="applyname"
+            name="applyname"
+            onChange={handleChange} 
+            value={applyForm.applyname}/>
           </div>
 
           <div className="mb-2">
-            <TextField type="email" label="email" />
-            <TextField type="phone" label="Phone" />
+            <TextField 
+            type="email" 
+            label="email"
+            name="email"
+            onChange={handleChange} 
+            value={applyForm.email}/>
+            <TextField 
+            type="phone" 
+            label="Phone"
+            name="phone"
+            onChange={handleChange} 
+            value={applyForm.phone}/>
           </div>
           <div className="mb-2">
             {" "}
-            <FormControl component="fieldset">
+            <FormControl component="fieldset" onChange={handleChange}>
               <FormLabel component="legend">
                 What species you are interested in ?{" "}
               </FormLabel>
               <RadioGroup row aria-label="animal" name="animal">
-                <FormControlLabel value="all" control={<Radio />} label="All" />
+                <FormControlLabel value="all" control={<Radio checked={applyForm.animal === "all"} />} label="All" />
                 <FormControlLabel
                   value="dog"
-                  control={<Radio />}
+                  control={<Radio checked={applyForm.animal === "dog"}/>}
                   label="Dogs"
                 />
                 <FormControlLabel
                   value="cat"
-                  control={<Radio />}
+                  control={<Radio checked={applyForm.animal === "cat"}/>}
                   label="Cats"
                 />
               </RadioGroup>
@@ -79,11 +93,21 @@ const ApplyForm = props => {
             <TextField
               type="number"
               label="Number of pet you adopted?"
+              name="adoptednum"
+              onChange={handleChange} 
+              value={applyForm.adoptednum}
               fullWidth
             />
           </div>
           <div className="mb-2">
-            <TextField label="Adoption Reason" multiline fullWidth rows={5} />
+            <TextField 
+            label="Adoption Reason" 
+            multiline 
+            fullWidth 
+            rows={5}
+            name="reason"
+            onChange={handleChange} 
+            value={applyForm.reason}/>
           </div>
           <div className="mb-2">
             <TextField
@@ -91,6 +115,9 @@ const ApplyForm = props => {
               multiline
               fullWidth
               rows={5}
+              name="experience"
+              onChange={handleChange} 
+              value={applyForm.experience}
             />
           </div>
         </form>

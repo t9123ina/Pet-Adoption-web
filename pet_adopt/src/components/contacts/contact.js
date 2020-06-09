@@ -21,7 +21,7 @@ const ContactList = props => {
         <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
           <StyledCard key={row.id}>
             <CardHeader
-              avatar={<Avatar aria-label="recipe"></Avatar>}
+              avatar={<Avatar style={{ backgroundColor:'#dc004e' }} aria-label="recipe"></Avatar>}
               title={
                 <div>
                   <Typography>
