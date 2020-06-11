@@ -29,6 +29,7 @@ const PetLists = props => {
   const { pets, pet, getPet } = props;
   const [selectedPet, setSelectedPet] = useState(null);
   const [show, setShow] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const classes = useStyles();
   const length = pets.length;
   const [applyForm, setapplyForm] = useState({
@@ -82,6 +83,7 @@ const PetLists = props => {
         show={show}
         pet={selectedPet}
         applyForm ={applyForm}
+        submitted ={submitted}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         handleClose={handleClose}

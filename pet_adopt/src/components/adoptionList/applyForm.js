@@ -18,8 +18,9 @@ import FormLabel from "@material-ui/core/FormLabel";
 
 import { useStyles } from "../common/commonClass";
 import { Typography } from "@material-ui/core";
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 const ApplyForm = props => {
-  const { pet, show, handleClose, handleSubmit, applyForm, handleChange } = props;
+  const { pet, show, handleClose, handleSubmit, applyForm, handleChange, submitted } = props;
   const classes = useStyles();
   useEffect(() => {
     console.log(pet);
@@ -45,28 +46,37 @@ const ApplyForm = props => {
             <Typography>Species: {pet.species}</Typography>
           </Typography>
         ) : null}
-        <form id="apply-form" className={classes.searchForm}>
+        <ValidatorForm 
+        id="apply-form" 
+        className={classes.searchForm}
+        onSubmit={handleSubmit}>
           <div className="mb-2">
-            <TextField 
+            <TextValidator 
             label="applyname"
             name="applyname"
             onChange={handleChange} 
-            value={applyForm.applyname}/>
+            value={applyForm.applyname}
+            validators={['required']}
+            errorMessages={['this field is required']}/>
           </div>
 
           <div className="mb-2">
-            <TextField 
+            <TextValidator 
             type="email" 
             label="email"
             name="email"
             onChange={handleChange} 
-            value={applyForm.email}/>
-            <TextField 
+            value={applyForm.email}
+            validators={['required', 'isEmail']}
+            errorMessages={['this field is required', 'email is not valid']}/>
+            <TextValidator 
             type="phone" 
             label="Phone"
             name="phone"
             onChange={handleChange} 
-            value={applyForm.phone}/>
+            value={applyForm.phone}
+            validators={['required', 'isNumber']}
+            errorMessages={['this field is required', 'phone is not valid']}/>
           </div>
           <div className="mb-2">
             {" "}
@@ -90,27 +100,31 @@ const ApplyForm = props => {
             </FormControl>
           </div>
           <div className="mb-2">
-            <TextField
+            <TextValidator
               type="number"
               label="Number of pet you adopted?"
               name="adoptednum"
               onChange={handleChange} 
               value={applyForm.adoptednum}
               fullWidth
+              validators={['required']}
+              errorMessages={['this field is required']}
             />
           </div>
           <div className="mb-2">
-            <TextField 
+            <TextValidator 
             label="Adoption Reason" 
             multiline 
             fullWidth 
             rows={5}
             name="reason"
             onChange={handleChange} 
-            value={applyForm.reason}/>
+            value={applyForm.reason}
+            validators={['required']}
+            errorMessages={['this field is required']}/>
           </div>
           <div className="mb-2">
-            <TextField
+            <TextValidator
               label="Adoption Experience"
               multiline
               fullWidth
@@ -118,16 +132,18 @@ const ApplyForm = props => {
               name="experience"
               onChange={handleChange} 
               value={applyForm.experience}
+              validators={['required']}
+              errorMessages={['this field is required']}
             />
           </div>
-        </form>
+          <Button color="primary"variant="contained" type="submit" disabled={submitted} autoFocus >
+            Submit
+          </Button>
+        </ValidatorForm>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">
-          Disagree
-        </Button>
-        <Button onClick={handleSubmit} color="primary" autoFocus>
-          Agree
+          Close
         </Button>
       </DialogActions>
     </Dialog>
